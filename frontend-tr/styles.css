@@ -1,0 +1,1215 @@
+/* Wavelore Audio — pricing section
+   Tokens first, then the background, then the bento rack, mobile-first. */
+
+:root {
+  --ink: #0b0d0a;
+  --graphite: #171a14;
+  --lime: #c6ff00;
+  --mint: #00f0b5;
+  --paper: #f3f7ec;
+  --paper-72: rgba(243, 247, 236, 0.72);
+  --paper-55: rgba(243, 247, 236, 0.55);
+  --line: rgba(243, 247, 236, 0.1);
+  --line-strong: rgba(243, 247, 236, 0.2);
+  --coral: #ff8f7a;
+
+  --font-display: "Bricolage Grotesque", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+  --font-text: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+
+  --radius: 20px;
+  --radius-sm: 14px;
+  --gap: clamp(12px, 0.5rem + 1vw, 20px);
+  --pad: clamp(20px, 0.9rem + 0.6vw, 24px);
+
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-text);
+  font-size: 100%;
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+p,
+ul {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+svg {
+  display: block;
+}
+
+.sprite {
+  display: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--mint);
+  outline-offset: 3px;
+}
+
+/* ---------------------------------------------------------------- background: liquid chrome */
+
+#bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: var(--ink);
+  animation: hue 18s ease-in-out infinite alternate;
+}
+
+/* Each band layer is translated by exactly one band period along its own axis, so the loop is seamless.
+   The layers are oversized in px (not %) so the travel never exposes an edge on narrow screens. */
+.chrome {
+  position: absolute;
+  inset: -1200px;
+  will-change: transform;
+}
+
+/* A band: a lime body, a hard paper edge (the chrome glint), then a mint tail falling back to ink. */
+.chrome-a {
+  background: repeating-linear-gradient(
+    108deg,
+    transparent 0px,
+    transparent 120px,
+    rgba(198, 255, 0, 0.1) 220px,
+    rgba(198, 255, 0, 0.38) 330px,
+    rgba(243, 247, 236, 0.62) 352px,
+    rgba(243, 247, 236, 0.06) 376px,
+    rgba(0, 240, 181, 0.3) 440px,
+    rgba(0, 240, 181, 0.05) 560px,
+    transparent 640px,
+    transparent 760px
+  );
+  animation: slide-a 13s linear infinite;
+}
+
+.chrome-b {
+  background: repeating-linear-gradient(
+    118deg,
+    transparent 0px,
+    transparent 220px,
+    rgba(0, 240, 181, 0.08) 340px,
+    rgba(0, 240, 181, 0.26) 470px,
+    rgba(243, 247, 236, 0.5) 500px,
+    rgba(243, 247, 236, 0.04) 524px,
+    rgba(198, 255, 0, 0.2) 610px,
+    transparent 740px,
+    transparent 980px
+  );
+  mix-blend-mode: screen;
+  animation: slide-b 21s linear infinite;
+}
+
+/* Thin hard highlights riding the first layer at a slightly different speed: the "wet" specular lines. */
+.chrome-edge {
+  background: repeating-linear-gradient(
+    108deg,
+    transparent 0px,
+    transparent 330px,
+    rgba(243, 247, 236, 0.55) 333px,
+    rgba(243, 247, 236, 0.75) 336px,
+    rgba(243, 247, 236, 0) 342px,
+    transparent 760px
+  );
+  mix-blend-mode: screen;
+  animation: slide-a 10s linear infinite;
+}
+
+.glint {
+  position: absolute;
+  top: 8%;
+  left: 18%;
+  width: 72vmax;
+  height: 72vmax;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(243, 247, 236, 0.16), rgba(198, 255, 0, 0.1) 30%, transparent 62%);
+  animation: glint 20s ease-in-out infinite;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 78% 72% at 50% 45%, transparent 40%, rgba(11, 13, 10, 0.72) 100%);
+}
+
+#bg.is-paused,
+#bg.is-paused * {
+  animation-play-state: paused;
+}
+
+@keyframes slide-a {
+  to {
+    transform: translate3d(723px, 235px, 0);
+  }
+}
+
+@keyframes slide-b {
+  to {
+    transform: translate3d(-865px, -460px, 0);
+  }
+}
+
+@keyframes glint {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  25% {
+    transform: translate3d(18vw, 14vh, 0);
+  }
+  50% {
+    transform: translate3d(30vw, -6vh, 0);
+  }
+  75% {
+    transform: translate3d(8vw, -16vh, 0);
+  }
+}
+
+@keyframes hue {
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    filter: hue-rotate(-40deg);
+  }
+}
+
+/* ---------------------------------------------------------------- stage */
+
+.stage {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: clamp(16px, 2vw, 22px) clamp(12px, 3vw, 32px);
+}
+
+.pricing {
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* ---------------------------------------------------------------- bento rack */
+
+.bento {
+  display: grid;
+  gap: var(--gap);
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    "head"
+    "billing"
+    "network"
+    "solo"
+    "studio"
+    "stat"
+    "trial";
+}
+
+.tile-head {
+  grid-area: head;
+}
+.tile-billing {
+  grid-area: billing;
+}
+.tile-stat {
+  grid-area: stat;
+}
+.tile-trial {
+  grid-area: trial;
+}
+.plan-solo {
+  grid-area: solo;
+}
+.plan-network {
+  grid-area: network;
+}
+.plan-studio {
+  grid-area: studio;
+}
+
+.tile {
+  position: relative;
+  isolation: isolate;
+  min-width: 0;
+  padding: var(--pad);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: linear-gradient(165deg, rgba(243, 247, 236, 0.035), transparent 45%), rgba(23, 26, 20, 0.8);
+  -webkit-backdrop-filter: blur(26px);
+  backdrop-filter: blur(26px);
+  box-shadow:
+    inset 0 1px 0 rgba(243, 247, 236, 0.07),
+    0 24px 60px -36px rgba(0, 0, 0, 0.9);
+  animation: rise 0.7s var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 70ms);
+}
+
+.tile > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Chrome specular that follows the pointer: a 1px gradient ring masked to the border, plus a soft glow. */
+.tile::before,
+.tile::after {
+  content: "";
+  position: absolute;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-out);
+}
+
+.tile::before {
+  inset: -1px;
+  padding: 1px;
+  background: radial-gradient(
+    520px circle at var(--mx, 50%) var(--my, 0%),
+    rgba(243, 247, 236, 1),
+    rgba(198, 255, 0, 0.75) 30%,
+    rgba(0, 240, 181, 0.4) 60%,
+    transparent 82%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+}
+
+.tile::after {
+  inset: 0;
+  background: radial-gradient(560px circle at var(--mx, 50%) var(--my, 0%), rgba(243, 247, 236, 0.17), rgba(198, 255, 0, 0.07) 38%, transparent 66%);
+}
+
+.tile:hover::before,
+.tile:hover::after,
+.tile.is-lit::before,
+.tile.is-lit::after {
+  opacity: 1;
+}
+
+.tile:hover,
+.tile.is-lit {
+  border-color: var(--line-strong);
+}
+
+.plan-featured:hover,
+.plan-featured.is-lit {
+  border-color: rgba(198, 255, 0, 0.6);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------------------------------------------------------------- headline tile */
+
+.tile-head {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.head-copy {
+  display: grid;
+  gap: 14px;
+}
+
+.eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--paper-72);
+}
+
+.eyebrow-mark {
+  width: 22px;
+  height: 22px;
+  color: var(--lime);
+  flex: none;
+}
+
+/* Separator and section name wrap as one unit, so a narrow screen never strands the dash. */
+.eyebrow-tail {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.eyebrow-sep {
+  width: 20px;
+  height: 1px;
+  background: var(--line-strong);
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-weight: 750;
+  font-size: clamp(2.125rem, 1.2rem + 3vw, 3.25rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+  max-width: 13ch;
+}
+
+.lede {
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.0625rem);
+  color: var(--paper-72);
+  max-width: 50ch;
+  text-wrap: pretty;
+}
+
+/* ---------------------------------------------------------------- numeral tiles */
+
+.tile-num {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-weight: 750;
+  font-size: clamp(2.75rem, 2rem + 2vw, 3rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+.tile-trial .stat-value {
+  color: var(--lime);
+}
+
+.stat-label {
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  color: var(--paper-72);
+  max-width: 26ch;
+  text-wrap: pretty;
+}
+
+.bars {
+  width: 100%;
+  height: 34px;
+  color: var(--mint);
+  fill: currentColor;
+  opacity: 0.85;
+}
+
+.bars rect {
+  transform-origin: 50% 100%;
+  transform-box: fill-box;
+  animation: breathe 4.5s ease-in-out infinite;
+}
+
+.bars rect:nth-child(3n + 1) {
+  animation-delay: -1.5s;
+}
+.bars rect:nth-child(3n + 2) {
+  animation-delay: -3s;
+}
+.bars rect:nth-child(5n) {
+  animation-duration: 5.5s;
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.72);
+  }
+}
+
+/* Fourteen day markers; a lime "today" cursor steps through them. */
+.days {
+  width: 100%;
+  height: 12px;
+  fill: rgba(243, 247, 236, 0.22);
+}
+
+.days rect {
+  animation: today 14s steps(1, end) infinite;
+}
+
+.days rect:nth-child(1) { animation-delay: 0s; }
+.days rect:nth-child(2) { animation-delay: -13s; }
+.days rect:nth-child(3) { animation-delay: -12s; }
+.days rect:nth-child(4) { animation-delay: -11s; }
+.days rect:nth-child(5) { animation-delay: -10s; }
+.days rect:nth-child(6) { animation-delay: -9s; }
+.days rect:nth-child(7) { animation-delay: -8s; }
+.days rect:nth-child(8) { animation-delay: -7s; }
+.days rect:nth-child(9) { animation-delay: -6s; }
+.days rect:nth-child(10) { animation-delay: -5s; }
+.days rect:nth-child(11) { animation-delay: -4s; }
+.days rect:nth-child(12) { animation-delay: -3s; }
+.days rect:nth-child(13) { animation-delay: -2s; }
+.days rect:nth-child(14) { animation-delay: -1s; }
+
+@keyframes today {
+  0%,
+  7.14% {
+    fill: var(--lime);
+  }
+  7.15%,
+  100% {
+    fill: rgba(243, 247, 236, 0.22);
+  }
+}
+
+/* ---------------------------------------------------------------- billing tile */
+
+/* One toolbar row on wide screens: label · switch · badge. On phones the label and badge share
+   the first line and the switch drops below them at full width. */
+.tile-billing {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+}
+
+.tile-label {
+  order: -2;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--paper-55);
+}
+
+.tile-billing .save {
+  order: -1;
+  margin-left: auto;
+}
+
+.seg {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  flex: 1 1 100%;
+  min-width: 0;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(11, 13, 10, 0.75);
+}
+
+.seg::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  border-radius: 999px;
+  background: var(--lime);
+  box-shadow: 0 6px 18px -6px rgba(198, 255, 0, 0.7);
+  transition: transform 0.5s var(--ease-spring);
+}
+
+.seg:has(#bill-yearly:checked)::before {
+  transform: translateX(100%);
+}
+
+.seg input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.seg label {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
+  color: var(--paper-72);
+  cursor: pointer;
+  transition: color 0.3s;
+  overflow-wrap: anywhere;
+}
+
+.seg input:checked + label {
+  color: var(--ink);
+}
+
+.seg input:focus-visible + label {
+  outline: 2px solid var(--mint);
+  outline-offset: 2px;
+}
+
+.save {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--mint);
+  background: rgba(0, 240, 181, 0.14);
+  box-shadow: inset 0 0 0 1px rgba(0, 240, 181, 0.3);
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.5s var(--ease-spring);
+}
+
+/* The badge lights up solid once yearly is the active interval. */
+.tile-billing:has(#bill-yearly:checked) .save {
+  color: var(--ink);
+  background: var(--mint);
+  box-shadow: 0 8px 20px -8px rgba(0, 240, 181, 0.8);
+  transform: scale(1.06);
+}
+
+/* ---------------------------------------------------------------- plan tiles */
+
+.plan {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.plan-head {
+  display: grid;
+  gap: 6px;
+}
+
+.plan-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+}
+
+.plan-head h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+.pitch {
+  color: var(--paper-72);
+  font-size: 0.9375rem;
+  text-wrap: pretty;
+}
+
+.tag {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  background: var(--lime);
+  text-align: center;
+}
+
+.price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 4px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.amount {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.75rem, 2.2rem + 1.6vw, 3.25rem);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  font-variant-numeric: tabular-nums;
+  transition: color 0.4s;
+}
+
+.amount.is-pulsing {
+  animation: pulse-amount 0.9s var(--ease-out);
+}
+
+@keyframes pulse-amount {
+  0% {
+    color: var(--lime);
+    transform: translateY(-3px);
+  }
+  100% {
+    color: inherit;
+    transform: none;
+  }
+}
+
+.per {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--paper-55);
+}
+
+.note {
+  flex-basis: 100%;
+  margin-top: 6px;
+  font-size: 0.875rem;
+  color: var(--paper-55);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Feature list and the success panel share one cell, so swapping them never moves the button. */
+.plan-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  flex: 1;
+}
+
+.plan-body > * {
+  grid-area: 1 / 1;
+}
+
+.features {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  transition: opacity 0.35s, visibility 0s 0.35s;
+}
+
+.features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  color: var(--paper);
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  color: var(--mint);
+}
+
+.features .icon {
+  margin-top: 1px;
+}
+
+.plan-featured {
+  border-color: rgba(198, 255, 0, 0.42);
+  background:
+    radial-gradient(90% 60% at 0% 0%, rgba(198, 255, 0, 0.14), transparent 60%),
+    linear-gradient(165deg, rgba(243, 247, 236, 0.03), transparent 45%),
+    rgba(23, 26, 20, 0.86);
+  box-shadow:
+    inset 0 1px 0 rgba(198, 255, 0, 0.35),
+    0 0 0 1px rgba(198, 255, 0, 0.08),
+    0 40px 90px -50px rgba(198, 255, 0, 0.45);
+}
+
+.plan-featured .plan-head h2 {
+  font-size: 1.75rem;
+}
+
+/* ---------------------------------------------------------------- CTA + states */
+
+.plan-foot {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.plan-foot > * {
+  grid-area: 1 / 1;
+}
+
+.cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 52px;
+  padding: 12px 20px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: rgba(243, 247, 236, 0.07);
+  color: var(--paper);
+  font: 600 1rem/1.25 var(--font-text);
+  letter-spacing: 0.005em;
+  text-decoration: none;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+  transition:
+    transform 0.2s var(--ease-out),
+    background 0.3s,
+    border-color 0.3s,
+    color 0.3s,
+    box-shadow 0.3s;
+}
+
+.cta[hidden] {
+  display: none;
+}
+
+.cta:hover {
+  background: rgba(243, 247, 236, 0.13);
+  border-color: rgba(243, 247, 236, 0.38);
+  transform: translateY(-1px);
+}
+
+.cta:active {
+  transform: scale(0.98);
+}
+
+.cta:disabled {
+  cursor: default;
+}
+
+.plan-featured .cta {
+  border-color: transparent;
+  background: var(--lime);
+  color: var(--ink);
+  box-shadow: 0 12px 30px -14px rgba(198, 255, 0, 0.7);
+}
+
+.plan-featured .cta:hover {
+  background: #d3ff3a;
+  box-shadow: 0 18px 44px -14px rgba(198, 255, 0, 0.9);
+}
+
+.cta-ico {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  transition: transform 0.3s var(--ease-out);
+}
+
+.cta:hover .cta-arrow {
+  transform: translateX(3px);
+}
+
+.cta-spinner {
+  display: none;
+  width: 18px;
+  height: 18px;
+  flex: none;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.cta[data-state="loading"] .cta-arrow {
+  display: none;
+}
+
+.cta[data-state="loading"] .cta-spinner {
+  display: block;
+}
+
+.cta[data-state="loading"] {
+  background-image: linear-gradient(100deg, transparent 20%, rgba(243, 247, 236, 0.35) 50%, transparent 80%);
+  background-size: 220% 100%;
+  animation: sheen 1.2s linear infinite;
+}
+
+@keyframes sheen {
+  from {
+    background-position: 120% 0;
+  }
+  to {
+    background-position: -120% 0;
+  }
+}
+
+/* The hand-off link takes the button's place: same footprint, mint instead of lime. */
+.cta-continue {
+  border-color: transparent;
+  background: var(--mint);
+  color: var(--ink);
+  box-shadow: 0 12px 30px -14px rgba(0, 240, 181, 0.7);
+  animation: rise 0.5s var(--ease-out) 0.15s both;
+}
+
+.plan-featured .cta-continue,
+.cta-continue:hover,
+.plan-featured .cta-continue:hover {
+  background: #2cf7c3;
+  color: var(--ink);
+  border-color: transparent;
+  box-shadow: 0 18px 44px -14px rgba(0, 240, 181, 0.9);
+}
+
+/* Success panel: replaces the feature list in place. */
+.receipt {
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  padding: 14px 16px;
+  border: 1px solid rgba(0, 240, 181, 0.4);
+  border-radius: var(--radius-sm);
+  background: linear-gradient(160deg, rgba(0, 240, 181, 0.16), rgba(0, 240, 181, 0.04));
+  animation: rise 0.55s var(--ease-out) both;
+}
+
+.receipt[hidden] {
+  display: none;
+}
+
+.plan.is-done .features {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.receipt-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--mint);
+}
+
+.receipt-check {
+  width: 26px;
+  height: 26px;
+  flex: none;
+  padding: 4px;
+  border-radius: 50%;
+  background: var(--mint);
+  color: var(--ink);
+}
+
+.receipt-check path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+  animation: draw 0.5s var(--ease-out) 0.25s forwards;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.receipt-msg {
+  font-size: 0.9375rem;
+  color: var(--paper);
+  text-wrap: pretty;
+}
+
+.receipt-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 0;
+  font-size: 0.875rem;
+  color: var(--paper-72);
+  font-variant-numeric: tabular-nums;
+}
+
+.receipt-meta > span:empty {
+  display: none;
+}
+
+.receipt-meta > span + span:not(:empty)::before {
+  content: "·";
+  margin: 0 8px;
+  color: var(--paper-55);
+}
+
+/* ---------------------------------------------------------------- status + fine print */
+
+/* Live region: announcements stay for assistive tech only; notices and errors are shown. */
+.status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  font-size: 0.9375rem;
+  color: var(--paper-72);
+  text-wrap: pretty;
+}
+
+.status:empty {
+  display: none;
+}
+
+.status.is-visible {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 14px var(--pad) 0;
+  overflow: visible;
+  clip-path: none;
+}
+
+.status.is-error {
+  color: var(--coral);
+}
+
+.fine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 24px;
+  margin-top: 12px;
+  padding: 0 var(--pad);
+  font-size: 0.875rem;
+  color: var(--paper-55);
+}
+
+.fine p {
+  flex: 1 1 320px;
+  min-width: 0;
+  text-wrap: pretty;
+}
+
+.faq-link {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 10px 2px;
+  margin: -10px 0;
+  color: var(--paper);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.faq-link .icon {
+  width: 18px;
+  height: 18px;
+  color: var(--lime);
+  transition: transform 0.3s var(--ease-out);
+}
+
+.faq-link:hover {
+  color: var(--lime);
+}
+
+.faq-link:hover .icon {
+  transform: translateX(3px);
+}
+
+/* ---------------------------------------------------------------- phones in landscape / phablets */
+
+@media (min-width: 480px) {
+  .bento {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "head head"
+      "billing billing"
+      "network network"
+      "solo solo"
+      "studio studio"
+      "stat trial";
+  }
+}
+
+/* ---------------------------------------------------------------- tablet: all three plans side by side */
+
+@media (min-width: 720px) {
+  .bento {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-areas:
+      "head head head head head head"
+      "billing billing billing billing billing billing"
+      "solo solo network network studio studio"
+      "stat stat stat trial trial trial";
+  }
+
+  .tile-head {
+    gap: 28px;
+  }
+
+  .tile-label {
+    order: 0;
+  }
+
+  .tile-billing .save {
+    order: 0;
+    margin-left: 0;
+  }
+
+  .seg {
+    flex: 1 1 260px;
+  }
+
+  .plan {
+    padding: 20px;
+  }
+
+  .features {
+    gap: 8px;
+  }
+
+  /* Three plans across 768px: shorter button, no arrow, so every label stays on one line. */
+  .plan .cta {
+    padding: 12px 10px;
+    font-size: 0.9375rem;
+  }
+
+  .plan .cta-arrow {
+    display: none;
+  }
+}
+
+/* ---------------------------------------------------------------- desktop: the full rack */
+
+@media (min-width: 1080px) {
+  /* Outer columns a touch wider so the side plans keep one-line features. */
+  .bento {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr) minmax(0, 0.95fr) minmax(0, 1.05fr);
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas:
+      "head head stat trial"
+      "head head billing billing"
+      "solo network network studio";
+  }
+
+  .plan {
+    padding: var(--pad);
+    gap: 16px;
+  }
+
+  .features {
+    gap: 9px;
+  }
+
+  .plan .cta {
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+
+  .plan .cta-arrow {
+    display: block;
+  }
+
+  .plan-featured .plan-head h2 {
+    font-size: 2rem;
+  }
+
+  .plan-featured .amount {
+    font-size: clamp(3.6rem, 3rem + 1.4vw, 4.25rem);
+  }
+
+  .plan-featured .features {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+  }
+
+  .plan-featured .features li {
+    font-size: 1rem;
+  }
+}
+
+/* ---------------------------------------------------------------- reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  #bg,
+  .chrome,
+  .glint,
+  .bars rect,
+  .days rect {
+    animation: none !important;
+  }
+
+  .tile,
+  .receipt,
+  .cta-continue {
+    animation: none !important;
+  }
+
+  .seg::before,
+  .cta,
+  .cta-ico,
+  .save,
+  .features,
+  .faq-link,
+  .faq-link .icon,
+  .tile::before,
+  .tile::after {
+    transition: none !important;
+  }
+
+  .amount.is-pulsing {
+    animation: none !important;
+  }
+}

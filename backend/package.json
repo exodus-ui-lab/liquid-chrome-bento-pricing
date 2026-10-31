@@ -1,0 +1,19 @@
+{
+  "name": "wavelore-pricing-api",
+  "version": "1.0.0",
+  "description": "Plan catalogue and checkout-session API for the Wavelore Audio pricing page.",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.13.0",
+    "hono": "^4.6.0",
+    "zod": "^4.1.0"
+  }
+}

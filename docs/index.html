@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pricing · Wavelore Audio</title>
+  <meta name="description" content="Wavelore Audio plans for podcasters: Solo, Network and Studio. Hosting, distribution and sponsorships, billed monthly or yearly with 20% off.">
+  <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <script src="mock-data.js"></script>
+<script src="assets/mock-api.js"></script>
+<script src="app.js" defer></script>
+</head>
+<body>
+  <div id="bg" aria-hidden="true">
+    <div class="chrome chrome-a"></div>
+    <div class="chrome chrome-b"></div>
+    <div class="chrome chrome-edge"></div>
+    <div class="glint"></div>
+    <div class="vignette"></div>
+  </div>
+
+  <main class="stage">
+    <section class="pricing" data-section="pricing" data-currency="USD" aria-labelledby="pricing-title">
+      <svg class="sprite" hidden xmlns="http://www.w3.org/2000/svg">
+        <symbol id="i-check" viewBox="0 0 20 20">
+          <circle cx="10" cy="10" r="9" fill="currentColor" opacity=".16"/>
+          <path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+        <symbol id="i-arrow" viewBox="0 0 20 20">
+          <path d="M4 10h11M10.5 5.5L15 10l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+        <symbol id="i-wave" viewBox="0 0 24 24">
+          <path d="M3 10v4M7.5 6v12M12 9v6M16.5 3.5v17M21 8v8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+        </symbol>
+      </svg>
+
+      <template id="copy">
+        <span data-copy="billed-monthly">Billed monthly</span>
+        <span data-copy="billed-yearly">{amount} billed once a year</span>
+        <span data-copy="save">Save {percent}%</span>
+        <span data-copy="announce-monthly">Prices now shown per month, billed monthly.</span>
+        <span data-copy="announce-yearly">Prices now shown per month, billed once a year.</span>
+        <span data-copy="loading">Preparing checkout…</span>
+        <span data-copy="amount-monthly">{amount} a month</span>
+        <span data-copy="amount-yearly">{amount} a year</span>
+        <span data-copy="expires">price held until {time}</span>
+        <span data-copy="error-network">We couldn't reach the checkout service. Check your connection and try again.</span>
+        <span data-copy="error-generic">Checkout couldn't be started. Please try again in a moment.</span>
+        <span data-copy="plans-offline">Showing list prices; live prices are unavailable right now.</span>
+      </template>
+
+      <div class="bento">
+        <header class="tile tile-head" style="--i: 0">
+          <p class="eyebrow">
+            <svg class="eyebrow-mark" aria-hidden="true"><use href="#i-wave"/></svg>
+            <span>Wavelore Audio</span>
+            <span class="eyebrow-tail"><span class="eyebrow-sep" aria-hidden="true"></span><span>Pricing</span></span>
+          </p>
+          <div class="head-copy">
+            <h1 id="pricing-title">One home for every show you make.</h1>
+            <p class="lede">Hosting, distribution and sponsorships for podcasts of every size, from a first episode to a full slate.</p>
+          </div>
+        </header>
+
+        <article class="tile tile-num tile-stat" style="--i: 1" aria-label="Network reach">
+          <p class="stat">
+            <strong class="stat-value">38.4M</strong>
+            <span class="stat-label">downloads delivered across the network in September</span>
+          </p>
+          <svg class="bars" viewBox="0 0 176 40" aria-hidden="true" preserveAspectRatio="none">
+            <rect x="0" y="26" width="6" height="14" rx="2"/>
+            <rect x="9" y="22" width="6" height="18" rx="2"/>
+            <rect x="18" y="28" width="6" height="12" rx="2"/>
+            <rect x="27" y="18" width="6" height="22" rx="2"/>
+            <rect x="36" y="24" width="6" height="16" rx="2"/>
+            <rect x="45" y="14" width="6" height="26" rx="2"/>
+            <rect x="54" y="20" width="6" height="20" rx="2"/>
+            <rect x="63" y="10" width="6" height="30" rx="2"/>
+            <rect x="72" y="16" width="6" height="24" rx="2"/>
+            <rect x="81" y="12" width="6" height="28" rx="2"/>
+            <rect x="90" y="19" width="6" height="21" rx="2"/>
+            <rect x="99" y="8" width="6" height="32" rx="2"/>
+            <rect x="108" y="13" width="6" height="27" rx="2"/>
+            <rect x="117" y="4" width="6" height="36" rx="2"/>
+            <rect x="126" y="11" width="6" height="29" rx="2"/>
+            <rect x="135" y="6" width="6" height="34" rx="2"/>
+            <rect x="144" y="15" width="6" height="25" rx="2"/>
+            <rect x="153" y="2" width="6" height="38" rx="2"/>
+            <rect x="162" y="9" width="6" height="31" rx="2"/>
+            <rect x="171" y="5" width="5" height="35" rx="2"/>
+          </svg>
+        </article>
+
+        <article class="tile tile-num tile-trial" style="--i: 2" aria-label="Free trial">
+          <p class="stat">
+            <strong class="stat-value">14</strong>
+            <span class="stat-label">days free on every plan, no card needed to start</span>
+          </p>
+          <svg class="days" viewBox="0 0 176 12" aria-hidden="true" preserveAspectRatio="none">
+            <rect x="0" y="0" width="10" height="12" rx="3"/>
+            <rect x="12.77" y="0" width="10" height="12" rx="3"/>
+            <rect x="25.54" y="0" width="10" height="12" rx="3"/>
+            <rect x="38.31" y="0" width="10" height="12" rx="3"/>
+            <rect x="51.08" y="0" width="10" height="12" rx="3"/>
+            <rect x="63.85" y="0" width="10" height="12" rx="3"/>
+            <rect x="76.62" y="0" width="10" height="12" rx="3"/>
+            <rect x="89.38" y="0" width="10" height="12" rx="3"/>
+            <rect x="102.15" y="0" width="10" height="12" rx="3"/>
+            <rect x="114.92" y="0" width="10" height="12" rx="3"/>
+            <rect x="127.69" y="0" width="10" height="12" rx="3"/>
+            <rect x="140.46" y="0" width="10" height="12" rx="3"/>
+            <rect x="153.23" y="0" width="10" height="12" rx="3"/>
+            <rect x="166" y="0" width="10" height="12" rx="3"/>
+          </svg>
+        </article>
+
+        <div class="tile tile-billing" style="--i: 3">
+          <p class="tile-label" id="billing-label">Billing</p>
+          <div class="seg" role="radiogroup" aria-labelledby="billing-label" data-demo="billing">
+            <input type="radio" name="interval" id="bill-monthly" value="monthly" checked>
+            <label for="bill-monthly" data-demo="monthly">Monthly</label>
+            <input type="radio" name="interval" id="bill-yearly" value="yearly" aria-describedby="save-note">
+            <label for="bill-yearly" data-demo="yearly">Yearly</label>
+          </div>
+          <p class="save" id="save-note" data-save>Save 20%</p>
+        </div>
+
+        <article class="tile plan plan-solo" style="--i: 4" data-plan="solo" data-demo="plan-solo" data-monthly="1900" data-yearly="18000" aria-labelledby="plan-solo-name">
+          <header class="plan-head">
+            <div class="plan-title">
+              <h2 id="plan-solo-name">Solo</h2>
+            </div>
+            <p class="pitch">One show, launched properly.</p>
+          </header>
+          <p class="price">
+            <span class="amount" data-amount>$19</span><span class="per">/mo</span>
+            <span class="note" data-note>Billed monthly</span>
+          </p>
+          <div class="plan-body">
+            <ul class="features">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>1 show, unlimited episodes</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>20,000 downloads a month</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>In every major podcast app</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Episode and listener stats</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Email support in two days</span></li>
+            </ul>
+            <div class="receipt" data-receipt role="status" hidden>
+              <p class="receipt-title"><svg class="receipt-check" viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>Checkout ready</span></p>
+              <p class="receipt-msg" data-receipt-message></p>
+              <p class="receipt-meta"><span data-receipt-amount></span><span data-receipt-expires></span></p>
+            </div>
+          </div>
+          <div class="plan-foot">
+            <button type="button" class="cta" data-checkout data-demo="cta-solo">
+              <span class="cta-label">Start with Solo</span>
+              <svg class="cta-ico cta-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+              <span class="cta-spinner" aria-hidden="true"></span>
+            </button>
+            <a class="cta cta-continue" data-continue href="#checkout" hidden>
+              <span class="cta-label">Continue to payment</span>
+              <svg class="cta-ico cta-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="tile plan plan-featured plan-network" style="--i: 5" data-plan="network" data-demo="plan-network" data-monthly="4900" data-yearly="46800" aria-labelledby="plan-network-name">
+          <header class="plan-head">
+            <div class="plan-title">
+              <h2 id="plan-network-name">Network</h2>
+              <p class="tag">Recommended</p>
+            </div>
+            <p class="pitch">A slate of shows, with sponsors sold for you.</p>
+          </header>
+          <p class="price">
+            <span class="amount" data-amount>$49</span><span class="per">/mo</span>
+            <span class="note" data-note>Billed monthly</span>
+          </p>
+          <div class="plan-body">
+            <ul class="features">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Up to 5 shows</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>250,000 downloads a month</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Dynamic ad insertion</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Private feeds for members</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Cross-promo between shows</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Same-day priority support</span></li>
+            </ul>
+            <div class="receipt" data-receipt role="status" hidden>
+              <p class="receipt-title"><svg class="receipt-check" viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>Checkout ready</span></p>
+              <p class="receipt-msg" data-receipt-message></p>
+              <p class="receipt-meta"><span data-receipt-amount></span><span data-receipt-expires></span></p>
+            </div>
+          </div>
+          <div class="plan-foot">
+            <button type="button" class="cta" data-checkout data-demo="cta-network">
+              <span class="cta-label">Start with Network</span>
+              <svg class="cta-ico cta-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+              <span class="cta-spinner" aria-hidden="true"></span>
+            </button>
+            <a class="cta cta-continue" data-continue href="#checkout" hidden>
+              <span class="cta-label">Continue to payment</span>
+              <svg class="cta-ico cta-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="tile plan plan-studio" style="--i: 6" data-plan="studio" data-demo="plan-studio" data-monthly="12900" data-yearly="123600" aria-labelledby="plan-studio-name">
+          <header class="plan-head">
+            <div class="plan-title">
+              <h2 id="plan-studio-name">Studio</h2>
+            </div>
+            <p class="pitch">Unlimited shows, a producer on call.</p>
+          </header>
+          <p class="price">
+            <span class="amount" data-amount>$129</span><span class="per">/mo</span>
+            <span class="note" data-note>Billed monthly</span>
+          </p>
+          <div class="plan-body">
+            <ul class="features">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Unlimited shows and seats</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>2 million downloads a month</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Dedicated producer on call</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Custom sponsor contracts</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Single sign-on, audit log</span></li>
+            </ul>
+            <div class="receipt" data-receipt role="status" hidden>
+              <p class="receipt-title"><svg class="receipt-check" viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>Checkout ready</span></p>
+              <p class="receipt-msg" data-receipt-message></p>
+              <p class="receipt-meta"><span data-receipt-amount></span><span data-receipt-expires></span></p>
+            </div>
+          </div>
+          <div class="plan-foot">
+            <button type="button" class="cta" data-checkout data-demo="cta-studio">
+              <span class="cta-label">Start with Studio</span>
+              <svg class="cta-ico cta-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+              <span class="cta-spinner" aria-hidden="true"></span>
+            </button>
+            <a class="cta cta-continue" data-continue href="#checkout" hidden>
+              <span class="cta-label">Continue to payment</span>
+              <svg class="cta-ico cta-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+
+      <footer class="fine">
+        <p>Prices in USD before tax. Change or cancel anytime; unused days are credited to your next invoice.</p>
+        <a class="faq-link" href="#pricing-faq">Read the pricing FAQ<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </footer>
+    </section>
+  </main>
+<script src="assets/work-badge.js" data-locale="en" data-en-href="./" data-tr-href="tr/" data-code-href="https://github.com/exodus-ui-lab/liquid-chrome-bento-pricing" data-code-label="Code on GitHub" data-nav-label="Language and source code"></script>
+</body>
+</html>

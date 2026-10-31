@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="tr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pricing · Wavelore Audio</title>
-  <meta name="description" content="Wavelore Audio plans for podcasters: Solo, Network and Studio. Hosting, distribution and sponsorships, billed monthly or yearly with 20% off.">
+  <title>Fiyatlandırma · Wavelore Audio</title>
+  <meta name="description" content="Podcast yayıncıları için Wavelore Audio planları: Solo, Network ve Studio. Barındırma, dağıtım ve sponsorluk; aylık ya da %20 indirimle yıllık ödeme.">
   <link rel="icon" href="data:,">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,18 +39,18 @@
       </svg>
 
       <template id="copy">
-        <span data-copy="billed-monthly">Billed monthly</span>
-        <span data-copy="billed-yearly">{amount} billed once a year</span>
-        <span data-copy="save">Save {percent}%</span>
-        <span data-copy="announce-monthly">Prices now shown per month, billed monthly.</span>
-        <span data-copy="announce-yearly">Prices now shown per month, billed once a year.</span>
-        <span data-copy="loading">Preparing checkout…</span>
-        <span data-copy="amount-monthly">{amount} a month</span>
-        <span data-copy="amount-yearly">{amount} a year</span>
-        <span data-copy="expires">price held until {time}</span>
-        <span data-copy="error-network">We couldn't reach the checkout service. Check your connection and try again.</span>
-        <span data-copy="error-generic">Checkout couldn't be started. Please try again in a moment.</span>
-        <span data-copy="plans-offline">Showing list prices; live prices are unavailable right now.</span>
+        <span data-copy="billed-monthly">Aylık faturalandırılır</span>
+        <span data-copy="billed-yearly">Yılda bir kez {amount} faturalandırılır</span>
+        <span data-copy="save">%{percent} indirim</span>
+        <span data-copy="announce-monthly">Fiyatlar artık aylık faturalandırmaya göre gösteriliyor.</span>
+        <span data-copy="announce-yearly">Fiyatlar artık aylık karşılığıyla gösteriliyor; ödeme yılda bir kez alınır.</span>
+        <span data-copy="loading">Ödeme hazırlanıyor…</span>
+        <span data-copy="amount-monthly">Aylık {amount}</span>
+        <span data-copy="amount-yearly">Yıllık {amount}</span>
+        <span data-copy="expires">fiyat şu saate kadar sabit: {time}</span>
+        <span data-copy="error-network">Ödeme hizmetine ulaşamadık. Bağlantınızı kontrol edip tekrar deneyin.</span>
+        <span data-copy="error-generic">Ödeme başlatılamadı. Lütfen birazdan tekrar deneyin.</span>
+        <span data-copy="plans-offline">Liste fiyatları gösteriliyor; güncel fiyatlara şu anda ulaşılamıyor.</span>
       </template>
 
       <div class="bento">
@@ -58,18 +58,18 @@
           <p class="eyebrow">
             <svg class="eyebrow-mark" aria-hidden="true"><use href="#i-wave"/></svg>
             <span>Wavelore Audio</span>
-            <span class="eyebrow-tail"><span class="eyebrow-sep" aria-hidden="true"></span><span>Pricing</span></span>
+            <span class="eyebrow-tail"><span class="eyebrow-sep" aria-hidden="true"></span><span>Fiyatlandırma</span></span>
           </p>
           <div class="head-copy">
-            <h1 id="pricing-title">One home for every show you make.</h1>
-            <p class="lede">Hosting, distribution and sponsorships for podcasts of every size, from a first episode to a full slate.</p>
+            <h1 id="pricing-title">Tüm programlarınız tek çatı altında.</h1>
+            <p class="lede">İlk bölümden dolu bir yayın takvimine kadar, her ölçekteki podcast için barındırma, dağıtım ve sponsorluk.</p>
           </div>
         </header>
 
-        <article class="tile tile-num tile-stat" style="--i: 1" aria-label="Network reach">
+        <article class="tile tile-num tile-stat" style="--i: 1" aria-label="Ağın erişimi">
           <p class="stat">
-            <strong class="stat-value">38.4M</strong>
-            <span class="stat-label">downloads delivered across the network in September</span>
+            <strong class="stat-value">38,4 Mn</strong>
+            <span class="stat-label">eylülde ağımız genelinde ulaştırılan indirme</span>
           </p>
           <svg class="bars" viewBox="0 0 176 40" aria-hidden="true" preserveAspectRatio="none">
             <rect x="0" y="26" width="6" height="14" rx="2"/>
@@ -95,10 +95,10 @@
           </svg>
         </article>
 
-        <article class="tile tile-num tile-trial" style="--i: 2" aria-label="Free trial">
+        <article class="tile tile-num tile-trial" style="--i: 2" aria-label="Ücretsiz deneme">
           <p class="stat">
             <strong class="stat-value">14</strong>
-            <span class="stat-label">days free on every plan, no card needed to start</span>
+            <span class="stat-label">gün her planda ücretsiz; başlamak için kart gerekmez</span>
           </p>
           <svg class="days" viewBox="0 0 176 12" aria-hidden="true" preserveAspectRatio="none">
             <rect x="0" y="0" width="10" height="12" rx="3"/>
@@ -119,14 +119,14 @@
         </article>
 
         <div class="tile tile-billing" style="--i: 3">
-          <p class="tile-label" id="billing-label">Billing</p>
+          <p class="tile-label" id="billing-label">Faturalandırma</p>
           <div class="seg" role="radiogroup" aria-labelledby="billing-label" data-demo="billing">
             <input type="radio" name="interval" id="bill-monthly" value="monthly" checked>
-            <label for="bill-monthly" data-demo="monthly">Monthly</label>
+            <label for="bill-monthly" data-demo="monthly">Aylık</label>
             <input type="radio" name="interval" id="bill-yearly" value="yearly" aria-describedby="save-note">
-            <label for="bill-yearly" data-demo="yearly">Yearly</label>
+            <label for="bill-yearly" data-demo="yearly">Yıllık</label>
           </div>
-          <p class="save" id="save-note" data-save>Save 20%</p>
+          <p class="save" id="save-note" data-save>%20 indirim</p>
         </div>
 
         <article class="tile plan plan-solo" style="--i: 4" data-plan="solo" data-demo="plan-solo" data-monthly="1900" data-yearly="18000" aria-labelledby="plan-solo-name">
@@ -134,34 +134,34 @@
             <div class="plan-title">
               <h2 id="plan-solo-name">Solo</h2>
             </div>
-            <p class="pitch">One show, launched properly.</p>
+            <p class="pitch">Tek program, sağlam bir başlangıç.</p>
           </header>
           <p class="price">
-            <span class="amount" data-amount>$19</span><span class="per">/mo</span>
-            <span class="note" data-note>Billed monthly</span>
+            <span class="amount" data-amount>$19</span><span class="per">/ay</span>
+            <span class="note" data-note>Aylık faturalandırılır</span>
           </p>
           <div class="plan-body">
             <ul class="features">
-              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>1 show, unlimited episodes</span></li>
-              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>20,000 downloads a month</span></li>
-              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>In every major podcast app</span></li>
-              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Episode and listener stats</span></li>
-              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Email support in two days</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>1 program, sınırsız bölüm</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Ayda 20.000 indirme</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Tüm büyük podcast uygulamalarında</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Bölüm ve dinleyici istatistikleri</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>E-posta desteği, iki gün içinde</span></li>
             </ul>
             <div class="receipt" data-receipt role="status" hidden>
-              <p class="receipt-title"><svg class="receipt-check" viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>Checkout ready</span></p>
+              <p class="receipt-title"><svg class="receipt-check" viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>Ödeme hazır</span></p>
               <p class="receipt-msg" data-receipt-message></p>
               <p class="receipt-meta"><span data-receipt-amount></span><span data-receipt-expires></span></p>
             </div>
           </div>
           <div class="plan-foot">
             <button type="button" class="cta" data-checkout data-demo="cta-solo">
-              <span class="cta-label">Start with Solo</span>
+              <span class="cta-label">Solo ile başlayın</span>
               <svg class="cta-ico cta-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
               <span class="cta-spinner" aria-hidden="true"></span>
             </button>
             <a class="cta cta-continue" data-continue href="#checkout" hidden>
-              <span class="cta-label">Continue to payment</span>
+              <span class="cta-label">Ödemeye geçin</span>
               <svg class="cta-ico cta-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
             </a>
           </div>
@@ -171,37 +171,37 @@
           <header class="plan-head">
             <div class="plan-title">
               <h2 id="plan-network-name">Network</h2>
-              <p class="tag">Recommended</p>
+              <p class="tag">Önerilen</p>
             </div>
-            <p class="pitch">A slate of shows, with sponsors sold for you.</p>
+            <p class="pitch">Birden çok program; sponsorlukları sizin için biz satarız.</p>
           </header>
           <p class="price">
-            <span class="amount" data-amount>$49</span><span class="per">/mo</span>
-            <span class="note" data-note>Billed monthly</span>
+            <span class="amount" data-amount>$49</span><span class="per">/ay</span>
+            <span class="note" data-note>Aylık faturalandırılır</span>
           </p>
           <div class="plan-body">
             <ul class="features">
-              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Up to 5 shows</span></li>
-              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>250,000 downloads a month</span></li>
-              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Dynamic ad insertion</span></li>
-              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Private feeds for members</span></li>
-              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Cross-promo between shows</span></li>
-              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Same-day priority support</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>En fazla 5 program</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Ayda 250.000 indirme</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Dinamik reklam yerleştirme</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Üyelere özel yayın akışları</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Programlar arası çapraz tanıtım</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Aynı gün öncelikli destek</span></li>
             </ul>
             <div class="receipt" data-receipt role="status" hidden>
-              <p class="receipt-title"><svg class="receipt-check" viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>Checkout ready</span></p>
+              <p class="receipt-title"><svg class="receipt-check" viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>Ödeme hazır</span></p>
               <p class="receipt-msg" data-receipt-message></p>
               <p class="receipt-meta"><span data-receipt-amount></span><span data-receipt-expires></span></p>
             </div>
           </div>
           <div class="plan-foot">
             <button type="button" class="cta" data-checkout data-demo="cta-network">
-              <span class="cta-label">Start with Network</span>
+              <span class="cta-label">Network ile başlayın</span>
               <svg class="cta-ico cta-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
               <span class="cta-spinner" aria-hidden="true"></span>
             </button>
             <a class="cta cta-continue" data-continue href="#checkout" hidden>
-              <span class="cta-label">Continue to payment</span>
+              <span class="cta-label">Ödemeye geçin</span>
               <svg class="cta-ico cta-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
             </a>
           </div>
@@ -212,34 +212,34 @@
             <div class="plan-title">
               <h2 id="plan-studio-name">Studio</h2>
             </div>
-            <p class="pitch">Unlimited shows, a producer on call.</p>
+            <p class="pitch">Sınırsız program, her an yanınızda bir yapımcı.</p>
           </header>
           <p class="price">
-            <span class="amount" data-amount>$129</span><span class="per">/mo</span>
-            <span class="note" data-note>Billed monthly</span>
+            <span class="amount" data-amount>$129</span><span class="per">/ay</span>
+            <span class="note" data-note>Aylık faturalandırılır</span>
           </p>
           <div class="plan-body">
             <ul class="features">
-              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Unlimited shows and seats</span></li>
-              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>2 million downloads a month</span></li>
-              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Dedicated producer on call</span></li>
-              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Custom sponsor contracts</span></li>
-              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Single sign-on, audit log</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Sınırsız program ve kullanıcı</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Ayda 2 milyon indirme</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Size özel, hep ulaşılabilir yapımcı</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Özel sponsorluk sözleşmeleri</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Tek oturum açma (SSO), denetim kaydı</span></li>
             </ul>
             <div class="receipt" data-receipt role="status" hidden>
-              <p class="receipt-title"><svg class="receipt-check" viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>Checkout ready</span></p>
+              <p class="receipt-title"><svg class="receipt-check" viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg><span>Ödeme hazır</span></p>
               <p class="receipt-msg" data-receipt-message></p>
               <p class="receipt-meta"><span data-receipt-amount></span><span data-receipt-expires></span></p>
             </div>
           </div>
           <div class="plan-foot">
             <button type="button" class="cta" data-checkout data-demo="cta-studio">
-              <span class="cta-label">Start with Studio</span>
+              <span class="cta-label">Studio ile başlayın</span>
               <svg class="cta-ico cta-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
               <span class="cta-spinner" aria-hidden="true"></span>
             </button>
             <a class="cta cta-continue" data-continue href="#checkout" hidden>
-              <span class="cta-label">Continue to payment</span>
+              <span class="cta-label">Ödemeye geçin</span>
               <svg class="cta-ico cta-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
             </a>
           </div>
@@ -249,11 +249,11 @@
       <p class="status" id="status" role="status" aria-live="polite"></p>
 
       <footer class="fine">
-        <p>Prices in USD before tax. Change or cancel anytime; unused days are credited to your next invoice.</p>
-        <a class="faq-link" href="#pricing-faq">Read the pricing FAQ<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <p>Fiyatlar USD cinsindendir ve vergiler hariçtir. Planınızı dilediğiniz zaman değiştirebilir veya iptal edebilirsiniz; kullanılmayan günler bir sonraki faturanıza yansıtılır.</p>
+        <a class="faq-link" href="#pricing-faq">Fiyatlandırma SSS'sine göz atın<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </footer>
     </section>
   </main>
-<script src="assets/work-badge.js" data-locale="en" data-en-href="./" data-tr-href="tr/" data-code-href="https://github.com/exodus-ui-lab/liquid-chrome-bento-pricing" data-code-label="Code on GitHub" data-nav-label="Language and source code"></script>
+<script src="assets/work-badge.js" data-locale="tr" data-tr-href="./" data-en-href="en/" data-code-href="https://github.com/exodus-ui-lab/liquid-chrome-bento-pricing" data-code-label="GitHub'da kod" data-nav-label="Dil ve kaynak kod"></script>
 </body>
 </html>

@@ -50,9 +50,10 @@
     var nav = document.createElement('nav');
     nav.setAttribute('aria-label', data.navLabel || 'Language and source code');
 
+    // Turkish first (TR | EN); each link is relative to this page, so it works under /<repo>/ on github.io too.
     var locale = data.locale === 'tr' ? 'tr' : 'en';
-    if (data.enHref) nav.appendChild(link(data.enHref, 'EN', locale === 'en', 'en'));
     if (data.trHref) nav.appendChild(link(data.trHref, 'TR', locale === 'tr', 'tr'));
+    if (data.enHref) nav.appendChild(link(data.enHref, 'EN', locale === 'en', 'en'));
     if (data.codeHref) {
       var sep = document.createElement('span');
       sep.className = 'sep';

@@ -45,7 +45,7 @@ window.MOCK_API_RESPONSES = {
       "currency": "USD",
       "expiresAt": "2026-10-02T10:30:00.000Z",
       "checkoutUrl": "/checkout/cs_wl_9k2fd7qa",
-      "message": "14 günlük ücretsiz deneme süreniz bitene kadar hiçbir ücret alınmaz."
+      "message": "Nothing is charged until your 14 free days end."
     },
     "delayMs": 800
   }
